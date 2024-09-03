@@ -15,7 +15,7 @@
 }
 
 // set text properties
-@mixin text($size,$line,$font-family,$color,$font-weight:normal){
+@mixin text($size,$line,$color){
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -24,8 +24,6 @@
     color: $color;
     font-size: $size;
     line-height: $line;
-    font-weight: $font-weight;
-    font-family: $font-family,monospace;
 }
 
 // set background image
