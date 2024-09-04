@@ -15,7 +15,7 @@
 }
 
 // set text properties
-@mixin text($size,$line,$color){
+@mixin text($size,$line:normal,$color:var(--black)){
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -34,6 +34,6 @@
 }
 
 // set border
-@mixin border($color:#333333,$width:1px,$style:solid){
+@mixin border($color:var(--black),$width:1px,$style:solid){
     border: $width $style $color;
 }
