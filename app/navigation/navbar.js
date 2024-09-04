@@ -73,10 +73,6 @@ export function Navbar({ toggleNavPane }){
         }
     }
 
-    const navlinks=Object.freeze([
-        "Projects","Experience","Contact"
-    ]);
-
     return (
         <nav id="navbar">
             <a

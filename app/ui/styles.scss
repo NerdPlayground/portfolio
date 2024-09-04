@@ -142,3 +142,178 @@ body{
     margin-bottom: 25px;
     text-align: left;
 }
+
+// ====================MAIN CONTENT====================
+
+#main-content{
+    --section1: 50%;
+    --section2: calc(100% - var(--section1));
+    @include dimensions(100%,100%);
+    flex-grow: 1;
+    @include flex(row,flex-start,flex-start);
+    background-color: var(--white);
+}
+
+#main-content::-webkit-scrollbar{
+    display: none;
+}
+
+// ====================WELCOME====================
+
+#welcome{
+    overflow: auto;
+    padding-inline: 25px;
+    padding-block: 0 15px;
+    @include dimensions(var(--section1),var(--section1),100%,100%);
+    flex-wrap: wrap;
+    @include flex(row,$justify:flex-start);
+}
+
+#welcome::-webkit-scrollbar{
+    width: initial;
+}
+
+#welcome::-webkit-scrollbar-thumb{
+    background-color: var(--light-black);
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+}
+
+#welcome::-webkit-scrollbar-track{
+    background-color: var(--black);
+    border-left: 8px solid var(--white);
+    border-right: 8px solid var(--white);
+}
+
+.welcome{
+    margin-bottom: 50px;
+    @include dimensions(100%,100%);
+}
+
+.welcome:last-of-type{
+    margin-bottom: 0px;
+}
+
+// ====================INTRODUCTION====================
+
+.block-title{
+    --font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: normal;
+    @include text(var(--font-size),var(--font-size));
+}
+
+#introduction{
+    @include flex(column,flex-start,flex-start);
+}
+
+#introduction h1{
+    --name: calc(var(--font-size) + 4px);
+    min-height: calc(var(--font-size) + 6px);
+    flex-wrap: wrap;
+    @include flex(row,flex-end);
+}
+
+#hello{
+    display: block;
+    margin-right: 17px;
+}
+
+#introduction h1 > span:last-of-type{
+    @include flex(row,flex-end,flex-start);
+}
+
+#name{
+    display: block;
+    @include text(var(--name),var(--name));
+}
+
+#cursor{
+    display: block;
+    @include dimensions(
+        24px,24px,
+        var(--name),var(--name)
+    );
+    border-bottom: 5px solid var(--black);
+    opacity: 0;
+    animation: blink 0.5s linear infinite;
+}
+
+@keyframes blink{
+    0%{ opacity: 0; }
+    50%{ opacity: 0.5; }
+    100%{ opacity: 1; }
+}
+
+#description{
+    @include text(19px);
+    @include dimensions(100%,100%);
+}
+
+// ====================SKILLSET====================
+
+#skill-set{
+    @include flex(column,flex-start,flex-start);
+}
+
+#skill-set h2{
+    display: block;
+}
+
+#skill-set h2 span:first-child{
+    text-decoration: line-through var(--red) solid 7px;
+}
+
+#skill-set h2 span:last-child{
+    color: var(--red);
+}
+
+#skills{
+    @include dimensions(100%,100%);
+    flex-wrap: wrap;
+    @include flex(row,center,flex-start);
+}
+
+#skills span{
+    --blur: 0px;
+    --distance: 3px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-block: 5px;
+    padding-inline: 10px;
+    @include text(19px);
+    border-radius: 5px;
+    @include border($style:dashed);
+    background: var(--white);
+    box-shadow:  var(--distance) var(--distance) var(--blur) var(--neu-shadows),
+    calc(var(--distance) * -1) calc(var(--distance) * -1) var(--blur) var(--neu-light);
+}
+
+// ====================SOCIALS====================
+
+#socials{
+    --border-radius: 5px;
+    align-self: flex-end;
+    flex-wrap: wrap;
+    @include flex(row,center,flex-start);
+}
+
+.social-link{
+    --padding: 5px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    padding: 5px;
+    @include dimensions();
+    @include flex(column,center,center);
+    color: var(--black);
+    text-decoration: none;
+    @include border($width:2px);
+    border-radius: calc(var(--border-radius) + var(--padding));
+}
+
+.social-link img{
+    padding: 5px;
+    object-fit: contain;
+    @include border($style:dashed);
+    border-radius: var(--border-radius);
+}

@@ -1,3 +1,9 @@
+import Welcome from "./welcome";
+
 export function Content(){
-    return "";
+    return (
+        <main id="main-content">
+            <Welcome/>
+        </main>
+    );
 }
