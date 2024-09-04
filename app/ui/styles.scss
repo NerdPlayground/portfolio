@@ -7,13 +7,138 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+:root{
+    --display: "normal"; /* changes when the webpage is viewed on smaller devices */
+    --red: #F50000;
+    --green: #00F500;
+    --black: #333333;
+    --light-black: #626262;
+    --white: #F5F5F5;
+    --neu-light: #F5F5F5;
+    --neu-shadows: #626262;
+}
+
 body{
-    background-color: #fcfcfc;
+    background-color: var(--white);
     @include flex(column,center,center);
     @include dimensions(100vw,100vw,100vh,100vh);
 }
 
 #root{
-    @include flex(column,center,center);
+    position: relative;
+    overflow: hidden;
+    background-color: var(--white);
+    @include flex(column,center,flex-start);
     @include dimensions(100%,1500px,100%,100%);
+}
+
+// ====================BUTTON====================
+
+.button{
+    cursor: pointer;
+    display: block;
+    padding-block: 5px;
+    padding-inline: 10px;
+    color: var(--black);
+    text-align: center;
+    border-radius: 5px;
+    @include border($width:2px);
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+}
+
+.button:focus,
+.button:active,
+.disabled-button{
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.success-message{
+    border-color: var(--green);
+}
+
+.error-message{
+    border-color: var(--red);
+}
+
+// ====================NAVBAR====================
+
+#navbar{
+    @include dimensions(100%,100%);
+    @include flex(row,center,flex-end);
+}
+
+#logo{
+    display: none;
+    margin-inline: 25px;
+    padding: 10px;
+    @include dimensions();
+    @include text(27.5px);
+    text-decoration: none;
+    border-radius: 50%;
+    @include border($width:2px,$style:dashed);
+}
+
+#links{
+    margin: 25px;
+    @include dimensions();
+    @include flex(row,center,flex-end);
+}
+
+.nav-link{
+    margin-right: 25px;
+    @include dimensions(150px,150px);
+    @include text(20px);
+    text-decoration: none;
+}
+
+#links a:last-of-type{
+    margin-right: 0;
+}
+
+// ====================NAVPANE====================
+
+.toggle-nav-pane{
+    display: none;
+    padding: 0;
+    min-width: 50px;
+    min-height: 40px;
+    @include dimensions(50px,50px,40px,40px);
+}
+
+#nav-pane{
+    z-index: 1;
+    position: absolute;
+    right: -250px;
+    padding: 25px;
+    @include dimensions($height:100%,$max-height:100%);
+    @include flex(column,flex-start,flex-start);
+    display: none;
+    background-color: var(--white);
+    border-left: 2px solid var(--black);
+    transition: right 0.5s linear;
+}
+
+#nav-pane::-webkit-scrollbar{
+    display: none;
+}
+
+#nav-pane > .toggle-nav-pane{
+    margin-bottom: 25px;
+    align-self: flex-end;
+}
+
+#nav-links{
+    overflow: auto;
+}
+
+#nav-links::-webkit-scrollbar{
+    display: none;
+}
+
+#nav-links > .nav-link{
+    margin-right: 0;
+    margin-bottom: 25px;
+    text-align: left;
 }

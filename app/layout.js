@@ -1,4 +1,5 @@
 import "@/app/ui/styles.scss";
+import "@/app/ui/media-queries.scss";
 
 export const metadata = {
     title: "",
