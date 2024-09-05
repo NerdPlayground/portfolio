@@ -19,7 +19,8 @@
 }
 
 body{
-    background-color: var(--white);
+    overflow: hidden;
+    background-color: var(--black);
     @include flex(column,center,center);
     @include dimensions(100vw,100vw,100vh,100vh);
 }
@@ -29,7 +30,7 @@ body{
     overflow: hidden;
     background-color: var(--white);
     @include flex(column,center,flex-start);
-    @include dimensions(100%,1500px,100%,100%);
+    @include dimensions(100%,1500px,100%,800px);
 }
 
 // ====================BUTTON====================
@@ -316,4 +317,138 @@ body{
     object-fit: contain;
     @include border($style:dashed);
     border-radius: var(--border-radius);
+}
+
+// ====================CONTENT====================
+
+#content-section{
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    @include dimensions(var(--section2),var(--section2));
+    flex-wrap: wrap;
+    @include flex(row,center,flex-start);
+}
+
+.content-title{
+    display: none;
+    margin-bottom: 25px;
+    @include text(30px);
+}
+
+.content-container{
+    position: absolute;
+    overflow: auto;
+    left: 0;
+    padding: 25px;
+    padding-top: 0;
+    @include dimensions(100%,100%,100%,100%);
+    background-color: var(--white);
+    @include text(19px);
+    transition: left 1s linear;
+}
+
+.content-container:not(:nth-child(2)){
+    left: 100%;
+}
+
+#projects::-webkit-scrollbar,
+#experience::-webkit-scrollbar,
+#contact::-webkit-scrollbar{
+    display: none;
+}
+
+// ====================SHOWCASE====================
+
+.project-tile,
+.experience-tile{
+    margin-bottom: 25px;
+    @include dimensions(100%,100%);
+    @include flex(column,flex-start,flex-start);
+    border-radius: 10px;
+    @include border($width:2px);
+}
+
+.project-tile:last-of-type,
+.experience-tile:last-of-type{
+    margin-bottom: 0;
+}
+
+.period-title{
+    padding: 10px;
+    @include dimensions(100%,100%);
+    flex-wrap: wrap-reverse;
+    @include flex(row,baseline,flex-start);
+    font-weight: bold;
+    color: var(--white);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: var(--black);
+}
+
+.period{
+    margin-right: 50px;
+    @include dimensions();
+}
+
+.title{
+    display: inline-block;
+    color: var(--white);
+    text-decoration: none;
+    @include dimensions();
+}
+
+.title::after{
+    content: "⇧";
+    margin-left: 10px;
+    display: inline-block;
+    transform: rotate(90deg) scale(1.25);
+}
+
+.title:hover::after{
+    animation: wave 1s linear infinite;
+}
+
+@keyframes wave{
+    0%{ transform: rotate(90deg) scale(1.25); }
+    50%{ transform: rotate(90deg) scale(1.75); }
+    100%{ transform: rotate(90deg) scale(1.25); }
+}
+
+.objectives,
+.description{
+    padding: 10px;
+    @include dimensions(100%,100%);
+}
+
+.experience-tile .description{
+    font-weight: bold;
+}
+
+.objectives{
+    list-style-position: inside;
+    border-top: 2px dashed var(--black);
+}
+
+.objectives li{
+    padding-left: 15px;
+    margin-bottom: 2.5px;
+}
+
+.tools{
+    padding: 10px;
+    padding-bottom: 0;
+    @include dimensions(100%,100%);
+    flex-wrap: wrap;
+    @include flex(row,center,flex-start);
+    border-top: 2px dashed var(--black);
+}
+
+.tools span{
+    padding-inline: 5px;
+    padding-block: 2.5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: var(--white);
+    font-weight: bold;
 }
