@@ -1,4 +1,5 @@
 "use client";
+import Contact from "./contact";
 import { data } from "../lib/data";
 import styles from "./colors.module.css";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
@@ -110,13 +111,12 @@ function Projects(){
     );
 }
 
-
-
 export default function ShowCase(){
     return (
         <section id="content-section">
             <Projects/>
             <Experience/>
+            <Contact/>
         </section>
     );
 }

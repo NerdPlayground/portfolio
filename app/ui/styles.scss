@@ -56,11 +56,12 @@ body{
 }
 
 .success-message{
-    border-color: var(--green);
+    text-align: center;
+    border-color: var(--green) !important;
 }
 
 .error-message{
-    border-color: var(--red);
+    border-color: var(--red) !important;
 }
 
 // ====================NAVBAR====================
@@ -348,7 +349,7 @@ body{
     transition: left 1s linear;
 }
 
-.content-container:not(:nth-child(2)){
+.content-container:not(:nth-child(3)){
     left: 100%;
 }
 
@@ -451,4 +452,80 @@ body{
     margin-bottom: 10px;
     color: var(--white);
     font-weight: bold;
+}
+
+// ====================CONTACT====================
+
+.contact{
+    margin-bottom: 25px;
+    @include dimensions(100%,100%);
+}
+
+.contact:last-child{
+    margin-bottom: 0;
+}
+
+form.contact{
+    @include flex(column,center,flex-start);
+}
+
+.form-group{
+    --label: 20%;
+    --space: 25px;
+    --input: calc(100% - var(--space) - var(--label));
+    margin-bottom: 15px;
+    @include dimensions(100%,100%);
+    @include flex(row,baseline,flex-start);
+}
+
+.last-child{
+    margin-bottom: 25px;
+}
+
+#form-result,
+.form-group > *{
+    padding-block: 5px;
+    padding-inline: 10px;
+    @include text(18px);
+    border: 2px solid var(--black);
+}
+
+.form-group label{
+    margin-right: var(--space);
+    @include dimensions(var(--label),var(--label));
+    font-weight: bold;
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.input{
+    background-color: var(--white);
+    min-width: var(--input);
+    @include dimensions(var(--input),var(--input));
+}
+
+.input:active,.input:focus{
+    outline: none;
+    border-style: dashed;
+}
+
+textarea.input{
+    min-height: 100px;
+}
+
+form.contact > input{
+    margin-bottom: 25px;
+    white-space: normal;
+    font-weight: bold;
+    @include text(18px);
+    @include dimensions($max-width:100%);
+}
+
+#form-result{
+    font-weight: bold;
+    white-space: normal;
+    @include dimensions(100%,100%);
+    ol{
+        list-style-position: inside;
+    }
 }

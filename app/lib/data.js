@@ -1,3 +1,8 @@
+const BASE_URL="https://portfolio-api-vwdg.onrender.com/portfolio-api/v1"
+export const endpoints=Object.freeze({
+    contact: `${BASE_URL}/contact-user/`,
+});
+
 export const data={
     "details":{
         "first_name":"George",
