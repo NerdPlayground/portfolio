@@ -1,4 +1,6 @@
 "use client";
+import { useContext } from "react";
+import { Carousel } from "../lib/context";
 import { blackOpsOne, courierPrime } from "@/app/ui/fonts";
 
 function NavLinks({ togglePage }){
@@ -7,11 +9,11 @@ function NavLinks({ togglePage }){
         "Experience","Contact"
     ]);
 
-    return navlinks.map(navlink=>{
+    return navlinks.map((navlink,index)=>{
         return(
             togglePage!==null && navlink==="Home"? "":
             <a
-                key={navlink}
+                key={index}
                 onClick={togglePage}
                 href={`#${navlink.toLowerCase()}`}
                 className={`button nav-link ${courierPrime.className}`}
@@ -35,43 +37,7 @@ export function Navpane({ toggleNavPane }){
 }
 
 export function Navbar({ toggleNavPane }){
-    /**
-     * brings selected page into view
-     */
-    function togglePage(event){
-        let display=getComputedStyle(document.body).getPropertyValue("--display");
-        /**
-         * normal link functionality is used
-         * when the webpage is viewed on smaller devices
-        */
-        if(display==='"normal"'){
-            event.preventDefault();
-            let selectedPage=event.target.innerText.toLowerCase();
-            if(CURRENT===selectedPage) return;
-            // prevent user from loading another page
-            disableButtons();
-            
-            let currentPage=document.getElementById(CURRENT);
-            let currentIndex=SEQUENCE.indexOf(CURRENT);
-            let nextIndex=SEQUENCE.indexOf(selectedPage);
-            let direction=(currentIndex-nextIndex>0)? -1 : 1;
-        
-            currentPage.style.left=`${-1*direction*100}%`;
-            for(let i=currentIndex+direction;;i+=direction){
-                let thisPage=document.getElementById(SEQUENCE[i]);
-                // unhides the hidden pages
-                thisPage.style.opacity="1";
-                thisPage.style.left="0";
-                if(SEQUENCE[i]===selectedPage) break;
-                /**
-                 * hides the pages between current page and selected page
-                 * thus removing the overlapping effect
-                 */
-                thisPage.style.opacity="0";
-                thisPage.style.left=`${-1*direction*100}%`;
-            }
-        }
-    }
+    const { thumbsRef, togglePage }=useContext(Carousel);
 
     return (
         <nav id="navbar">
@@ -79,7 +45,7 @@ export function Navbar({ toggleNavPane }){
                 id="logo" href="#welcome"
                 className={`${blackOpsOne.className}`}
             >GM</a>
-            <div id="links">
+            <div id="links" ref={thumbsRef}>
                 <NavLinks togglePage={togglePage}/>
                 <svg className="button toggle-nav-pane" fill="#333333" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={toggleNavPane}>
                     <path fillRule="evenodd" d="M4.92 17.28a.6.6 0 0 1 .6-.6h12a.599.599 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Zm0-4.8a.6.6 0 0 1 .6-.6h12a.599.599 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Zm0-4.8a.6.6 0 0 1 .6-.6h12a.6.6 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Z" clipRule="evenodd"></path>

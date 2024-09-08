@@ -23,7 +23,7 @@ export default function Contact(){
                 If you have any interesting projects that you need a hand in 
                 or if you just want to say hello, don't hesitate to reach out;
             `}</p>
-            <form className="contact" method="POST" action={formAction}>
+            <form className="contact" action={formAction}>
                 <div className="form-group">
                     <label htmlFor="username">Name:</label>
                     <input

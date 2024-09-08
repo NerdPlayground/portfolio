@@ -150,6 +150,7 @@ body{
 #main-content{
     --section1: 50%;
     --section2: calc(100% - var(--section1));
+    overflow: hidden;
     @include dimensions(100%,100%);
     flex-grow: 1;
     @include flex(row,flex-start,flex-start);
@@ -322,13 +323,17 @@ body{
 
 // ====================CONTENT====================
 
-#content-section{
-    position: relative;
+#content-overflow{
     overflow: hidden;
-    min-height: 100%;
-    @include dimensions(var(--section2),var(--section2));
-    flex-wrap: wrap;
-    @include flex(row,center,flex-start);
+    background-color: var(--black);
+    @include dimensions(var(--section2),var(--section2),100%,100%);
+    background-color: var(--black);
+}
+
+#content-section{
+    display: flex;
+    @include dimensions(100%,100%,100%,100%);
+    background-color: var(--red);
 }
 
 .content-title{
@@ -338,25 +343,17 @@ body{
 }
 
 .content-container{
-    position: absolute;
     overflow: auto;
-    left: 0;
     padding: 25px;
     padding-top: 0;
-    @include dimensions(100%,100%,100%,100%);
-    background-color: var(--white);
+    min-width: 0;
+    flex: 0 0 100%;
+    transform: translate3d(0, 0, 0);
     @include text(19px);
-    transition: left 1s linear;
-}
-
-.content-container:not(:nth-child(3)){
-    left: 100%;
-}
-
-#projects::-webkit-scrollbar,
-#experience::-webkit-scrollbar,
-#contact::-webkit-scrollbar{
-    display: none;
+    background-color: var(--white);
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 
 // ====================SHOWCASE====================
