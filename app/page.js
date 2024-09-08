@@ -1,8 +1,41 @@
 "use client";
-import { Content } from "@/app/content/main-content"
+import { Carousel } from './lib/context';
+import useEmblaCarousel from 'embla-carousel-react';
+import { useState, useEffect, useCallback } from 'react';
+import { Content } from "@/app/content/main-content";
 import { Navbar, Navpane } from "@/app/navigation/navbar";
 
-export default function Root(){
+export default function Root(){const [selectedIndex, setSelectedIndex]=useState(0);
+    const [emblaMainRef,emblaMainApi]=useEmblaCarousel({});
+    const [emblaThumbsRef,emblaThumbsApi]=useEmblaCarousel({
+        dragFree: true,
+        containScroll: 'keepSnaps',
+    });
+
+    const onThumbClick=useCallback(
+        (index) => {
+            if (!emblaMainApi || !emblaThumbsApi) return;
+            emblaMainApi.scrollTo(index);
+        },
+        [emblaMainApi, emblaThumbsApi]
+    );
+
+    const onSelect=useCallback(()=>{
+            if (!emblaMainApi || !emblaThumbsApi) return;
+            setSelectedIndex(emblaMainApi.selectedScrollSnap());
+            emblaThumbsApi.scrollTo(emblaMainApi.selectedScrollSnap());
+        },
+        [emblaMainApi, emblaThumbsApi, setSelectedIndex]
+    );
+
+    useEffect(()=>{
+            if (!emblaMainApi) return;
+            onSelect();
+            emblaMainApi.on('select', onSelect).on('reInit', onSelect);
+        },
+        [emblaMainApi, onSelect]
+    );
+
     /**
      * closes nav pane if user clicks outside it
     */
@@ -33,10 +66,14 @@ export default function Root(){
     }
 
     return(
-        <>
+        <Carousel.Provider value={{
+            mainRef: emblaMainRef,
+            thumbsRef: emblaThumbsRef,
+            togglePage: onThumbClick,
+        }}>
             <Navpane toggleNavPane={toggleNavPane}/>
             <Navbar toggleNavPane={toggleNavPane}/>
             <Content/>
-        </>
+        </Carousel.Provider>
     );
 }

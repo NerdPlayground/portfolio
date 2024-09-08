@@ -3,6 +3,8 @@ import Contact from "./contact";
 import { data } from "../lib/data";
 import styles from "./colors.module.css";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
+import { useContext } from "react";
+import { Carousel } from "../lib/context";
 
 function Header({ name, link, start_date, end_date, ongoing }){
     const shorten_date=(date)=>{
@@ -112,11 +114,19 @@ function Projects(){
 }
 
 export default function ShowCase(){
+    const { mainRef }=useContext(Carousel);
+
+    const components=[
+        <Projects key={0}/>,
+        <Experience key={1}/>,
+        <Contact key={2}/>,
+    ];
+
     return (
-        <section id="content-section">
-            <Projects/>
-            <Experience/>
-            <Contact/>
+        <section id="content-overflow" ref={mainRef}>
+            <section id="content-section">{
+                components.map(component=>component)
+            }</section>
         </section>
     );
 }
