@@ -5,13 +5,13 @@ import { blackOpsOne, courierPrime } from "@/app/ui/fonts";
 
 function NavLinks({ togglePage }){
     const navlinks=Object.freeze([
-        "Home","Projects",
+        "Welcome","Projects",
         "Experience","Contact"
     ]);
 
     return navlinks.map((navlink,index)=>{
         return(
-            togglePage!==null && navlink==="Home"? "":
+            togglePage!==null && navlink==="Welcome"? "":
             <a
                 key={index}
                 onClick={togglePage}
