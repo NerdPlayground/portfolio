@@ -225,9 +225,13 @@ body{
     @include flex(row,flex-end,flex-start);
 }
 
-#name{
+#name,#static-name{
     display: block;
     @include text(var(--name),var(--name));
+}
+
+#static-name{
+    display: none;
 }
 
 #cursor{
