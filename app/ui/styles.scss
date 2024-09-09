@@ -8,7 +8,6 @@
 }
 
 :root{
-    --display: "normal"; /* changes when the webpage is viewed on smaller devices */
     --red: #F50000;
     --green: #00F500;
     --black: #333333;
@@ -325,15 +324,12 @@ body{
 
 #content-overflow{
     overflow: hidden;
-    background-color: var(--black);
     @include dimensions(var(--section2),var(--section2),100%,100%);
-    background-color: var(--black);
 }
 
 #content-section{
     display: flex;
     @include dimensions(100%,100%,100%,100%);
-    background-color: var(--red);
 }
 
 .content-title{
@@ -508,6 +504,9 @@ form.contact{
 
 textarea.input{
     min-height: 100px;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 
 form.contact > input{
