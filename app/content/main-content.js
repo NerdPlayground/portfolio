@@ -1,7 +1,7 @@
 import Welcome from "./welcome";
 import ShowCase from "./showcase";
 
-export function Content(){
+export default function Content(){
     return (
         <main id="main-content">
             <Welcome/>

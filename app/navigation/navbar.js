@@ -49,3 +49,12 @@ export function Navbar({ toggleNavPane }){
         </nav>
     );
 }
+
+export default function Navigation({ toggleNavPane }){
+    return(
+        <>
+            <Navpane toggleNavPane={toggleNavPane}/>
+            <Navbar toggleNavPane={toggleNavPane}/>
+        </>
+    );
+}

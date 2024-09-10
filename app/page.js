@@ -1,6 +1,6 @@
 "use client";
-import { Content } from "@/app/content/main-content";
-import { Navbar, Navpane } from "@/app/navigation/navbar";
+import Content from "./content/main-content";
+import Navigation from "./navigation/navbar";
 
 export default function Root(){
     /**
@@ -34,8 +34,7 @@ export default function Root(){
 
     return(
         <>
-            <Navpane toggleNavPane={toggleNavPane}/>
-            <Navbar toggleNavPane={toggleNavPane}/>
+            <Navigation toggleNavPane={toggleNavPane}/>
             <Content/>
         </>
     );

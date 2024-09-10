@@ -115,7 +115,9 @@ export default function ShowCase(){
     return (
         <section id="content-overflow">
             <section id="content-section">
-                <Projects/><Experience/><Contact/>
+                <Projects/>
+                <Experience/>
+                <Contact/>
             </section>
         </section>
     );
