@@ -8,7 +8,6 @@
 }
 
 :root{
-    --display: "normal"; /* changes when the webpage is viewed on smaller devices */
     --red: #F50000;
     --green: #00F500;
     --black: #333333;
@@ -44,15 +43,15 @@ body{
     text-align: center;
     border-radius: 5px;
     @include border($width:2px);
-    border-right-width: 5px;
-    border-bottom-width: 5px;
+    box-shadow: 0 3px var(--black);
 }
 
 .button:focus,
 .button:active,
 .disabled-button{
-    border-right-width: 2px;
-    border-bottom-width: 2px;
+    outline: none;
+    transform: translateY(3px);
+    box-shadow: 0 0 var(--black);
 }
 
 .success-message{
@@ -226,9 +225,13 @@ body{
     @include flex(row,flex-end,flex-start);
 }
 
-#name{
+#name,#static-name{
     display: block;
     @include text(var(--name),var(--name));
+}
+
+#static-name{
+    display: none;
 }
 
 #cursor{
@@ -325,15 +328,12 @@ body{
 
 #content-overflow{
     overflow: hidden;
-    background-color: var(--black);
     @include dimensions(var(--section2),var(--section2),100%,100%);
-    background-color: var(--black);
 }
 
 #content-section{
     display: flex;
     @include dimensions(100%,100%,100%,100%);
-    background-color: var(--red);
 }
 
 .content-title{
@@ -508,6 +508,9 @@ form.contact{
 
 textarea.input{
     min-height: 100px;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 
 form.contact > input{

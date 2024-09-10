@@ -50,16 +50,20 @@ function Introduction({ first_name, last_name, bio }){
     useEffect(()=>{
         let name=Array.from(`${first_name} ${last_name}`.toUpperCase());
         let nameContainer=document.getElementById("name");
-        let counter=0;
-        setTimeout(()=>{
-            let writeName=setInterval(()=>{
-                nameContainer.textContent+=name[counter++];
-                if(counter>=name.length){
-                    clearInterval(writeName);
-                    setTimeout(()=>nameContainer.nextElementSibling.remove(),1000);
-                }
-            },250);
-        },1000);
+        let styles=getComputedStyle(nameContainer);
+        let display=styles.getPropertyValue("display");
+        if(display!=="none"){
+            let counter=0;
+            setTimeout(()=>{
+                let writeName=setInterval(()=>{
+                    nameContainer.textContent+=name[counter++];
+                    if(counter>=name.length){
+                        clearInterval(writeName);
+                        setTimeout(()=>nameContainer.nextElementSibling.remove(),1000);
+                    }
+                },250);
+            },1000);
+        }
     },[first_name,last_name]);
 
     return (
@@ -69,6 +73,9 @@ function Introduction({ first_name, last_name, bio }){
                 <span>
                     <span id="name" className={`${blackOpsOne.className}`}></span>
                     <span id="cursor"></span>
+                    <span id="static-name" className={`${blackOpsOne.className}`}>
+                        {`GEORGE MOBISA`}
+                    </span>
                 </span>
             </h1>
             <div
