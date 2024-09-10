@@ -43,15 +43,15 @@ body{
     text-align: center;
     border-radius: 5px;
     @include border($width:2px);
-    border-right-width: 5px;
-    border-bottom-width: 5px;
+    box-shadow: 0 3px var(--black);
 }
 
 .button:focus,
 .button:active,
 .disabled-button{
-    border-right-width: 2px;
-    border-bottom-width: 2px;
+    outline: none;
+    transform: translateY(3px);
+    box-shadow: 0 0 var(--black);
 }
 
 .success-message{
