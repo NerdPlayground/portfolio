@@ -111,6 +111,20 @@
     }
 }
 
+@media screen and (max-width: 500px){
+    .error-container{
+        .label{ @include text(60px); }
+        .information{ @include text(18px); }
+    }
+}
+
+@media screen and (max-width: 400px){
+    .error-container{
+        .label{ @include text(45px); }
+        .information{ @include text(16px); }
+    }
+}
+
 @media screen and (max-width: 350px){
     #name,#cursor{
         display: none;

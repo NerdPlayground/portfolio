@@ -1,12 +1,20 @@
-const BASE_URL="https://portfolio-api-vwdg.onrender.com/portfolio-api/v1"
+const
+    BASE_URL="https://portfolio-api-vwdg.onrender.com/portfolio-api/v1",
+    PORTFOLIO_USER=process.env.PORTFOLIO_USER,
+    USER=`${BASE_URL}/users/${PORTFOLIO_USER}`;
+
 export const endpoints=Object.freeze({
     contact: `${BASE_URL}/contact-user/`,
+    details: `${USER}/`,
+    projects: `${USER}/projects/`,
+    experiences: `${USER}/experiences/`,
 });
 
 export const data={
     "details":{
         "first_name":"George",
         "last_name":"Mobisa",
+        "email":"studytime023@gmail.com",
         "profile":{
             "bio":"Dedicated software developer with a keen focus on detail and efficiency. Developed and deployed multiple vigorously tested and secure projects ranging from web applications, stand-alone APIs to useful scripts that automate repetitive tasks. Focused on building ethical, scalable and optimizable systems in the society",
             "skills":[

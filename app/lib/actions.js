@@ -1,6 +1,7 @@
 "use server";
 import { z } from "zod";
-import { endpoints } from "./data";
+import { data, endpoints } from "./data";
+import { notFound } from "next/navigation";
 
 const MessageSchema=z.object({
     username: z.string().min(1,{
@@ -18,6 +19,13 @@ const MessageSchema=z.object({
     }).max(250,{
         message:"Ensure your message is at most 250 characters"
     }),
+    receiver: z.string({
+        invalid_type_error:"Don't tamper with the receiver details"
+    }).min(1,{
+        message:"Don't tamper with the receiver details"
+    }).email({
+        message:"Ensure the receiver email is reverted to its original state"
+    }),
 })
 
 export async function sendMessage(prevState,formData){
@@ -25,6 +33,7 @@ export async function sendMessage(prevState,formData){
         username: formData.get("username"),
         email: formData.get("email"),
         message: formData.get("message"),
+        receiver: formData.get("receiver"),
     });
 
     if(!validatedData.success) return {
@@ -34,10 +43,10 @@ export async function sendMessage(prevState,formData){
     }
 
     const requestBody={
-        name: formData.get("username"),
-        sender: formData.get("email"),
-        receiver: "studytime023@gmail.com",
-        message: formData.get("message"),
+        name: validatedData.data.username,
+        sender: validatedData.data.email,
+        receiver: validatedData.data.receiver,
+        message: validatedData.data.message,
     }
     const response=await fetch(endpoints.contact,{
         method: "POST",
@@ -65,4 +74,25 @@ export async function sendMessage(prevState,formData){
         success: true,
         message: "Your message has been sent"
     }
+}
+
+export async function fetchData(endpoint){
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return data[endpoint];
+}
+
+export async function fetchAPIData(endpoint){
+    const response=await fetch(endpoints[endpoint],{
+        method: "GET",
+        headers:{"Content-Type":"application/json"},
+    });
+
+    const results=await response.json();
+    if(!response.ok){
+        if(response.status===404) notFound();
+        else if(response.status===429) throw new Error(`You have made too many request. Please try again later`);
+        else throw new Error(`Something went wrong but we are working on it`);
+    }
+
+    return results;
 }
