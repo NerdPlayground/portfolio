@@ -54,6 +54,26 @@ body{
     20%{ transform: scaleY(1); }
 }
 
+// ====================ERROR====================
+
+.error-container{
+    padding: 20px;
+    @include flex(column,center,center);
+    @include dimensions($max-width:100%,$max-height:100%);
+    .label{
+        text-align: center;
+        white-space: normal;
+        @include text(80px);
+        @include dimensions(100%,100%,100%,100%);
+    }
+    .information{
+        text-align: center;
+        white-space: normal;
+        @include text(20px);
+        @include dimensions(100%,100%,100%,100%);
+    }
+}
+
 // ====================BUTTON====================
 
 .button{
