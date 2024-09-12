@@ -2,7 +2,7 @@ import { useActionState, useEffect, useState } from "react";
 import { sendMessage } from "../lib/actions";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
 
-export default function Contact(){
+export default function Contact({ email, first_name }){
     const [message,setMessage]=useState(false);
     const [formState,formAction,pending]=useActionState(sendMessage,null);
 
@@ -48,12 +48,16 @@ export default function Contact(){
                     <label htmlFor="message">Message:</label>
                     <textarea
                         id="message" name="message"
-                        placeholder="Hello George,..." required
+                        placeholder={`Hello ${first_name},...`} required
                         defaultValue={formState?.form_data?.get("message")}
                         className={`input ${cutiveMono.className}
                         ${formState?.errors?.message? "error-message":""}`}
                     ></textarea>
                 </div>
+                <input
+                    id="receiver" name="receiver"
+                    type="hidden" defaultValue={email}
+                />
                 <input
                     type="submit"
                     disabled={pending}

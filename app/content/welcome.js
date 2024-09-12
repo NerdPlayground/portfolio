@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useEffect } from "react";
-import { data } from "../lib/data";
 import { courierPrime, blackOpsOne, cutiveMono } from "../ui/fonts";
 
 function Socials({ socials }){
@@ -88,11 +87,9 @@ function Introduction({ first_name, last_name, bio }){
     );
 }
 
-export default function Welcome(){
-    const
-        details=data.details,
-        profile=details.profile;
-
+export default function Welcome({ details }){
+    const profile=details.profile;
+    
     return (
         <section id="welcome">
             <Introduction

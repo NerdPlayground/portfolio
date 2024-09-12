@@ -1,6 +1,5 @@
 "use client";
 import Contact from "./contact";
-import { data } from "../lib/data";
 import styles from "./colors.module.css";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
 
@@ -43,9 +42,7 @@ function Body({ description, objectives, tools }){
     )
 }
 
-function Experience(){
-    const experiences=data.experiences;
-
+function Experience({ experiences }){
     return (
         <div 
             id="experience"
@@ -77,9 +74,7 @@ function Experience(){
     );
 }
 
-function Projects(){
-    const projects=data.projects;
-
+function Projects({ projects }){
     return (
         <div 
             id="projects"
@@ -111,13 +106,13 @@ function Projects(){
     );
 }
 
-export default function ShowCase(){
+export default function ShowCase({ email, first_name, projects, experiences }){
     return (
         <section id="content-overflow">
             <section id="content-section">
-                <Projects/>
-                <Experience/>
-                <Contact/>
+                <Projects projects={projects}/>
+                <Experience experiences={experiences}/>
+                <Contact email={email} first_name={first_name}/>
             </section>
         </section>
     );
