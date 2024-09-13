@@ -56,7 +56,6 @@ export async function sendMessage(prevState,formData){
 
     const results=await response.json();
     if(!response.ok) {
-        console.log(results);
         return{
             success: false, form_data: formData,
             message: "Unfortunately your message was not sent",
@@ -90,8 +89,8 @@ export async function fetchAPIData(endpoint){
     const results=await response.json();
     if(!response.ok){
         if(response.status===404) notFound();
-        else if(response.status===429) throw new Error(`You have made too many request. Please try again later`);
-        else throw new Error(`Something went wrong but we are working on it`);
+        else if(response.status===429) throw new Error(`CUSTOM APPLICATION ERROR: You have made too many request. Please try again later`);
+        else throw new Error(`CUSTOM APPLICATION ERROR: Something went wrong but we are working on it`);
     }
 
     return results;
