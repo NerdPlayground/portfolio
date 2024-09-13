@@ -14,7 +14,7 @@ export default async function Image(){
             justifyContent: "center",
             // backgroundColor: "#F5F5F5",
             // backgroundSize: "contain",
-            // backgroundRepeat: "no-repeat",
+            backgroundRepeat: "no-repeat",
             // backgroundPosition: "center",
             backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/developer-activity-amico.svg)`,
             // border:"5px solid red",
