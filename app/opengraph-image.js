@@ -17,7 +17,7 @@ export default async function Image(){
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/opengraph-image.png)`,
+            backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/developer-activity-amico.svg)`,
         }}>
         </div>),
         {...size}
