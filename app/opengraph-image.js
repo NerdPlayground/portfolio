@@ -7,7 +7,7 @@ export const alt="Software Developer | Frontend 🎨 | Backend 🛠 | Fullstack 
 export default async function Image(){
     return new ImageResponse(
         (<div style={{
-            background: "#333333",
+            background: "#F5F5F5",
             width: "100%",
             height: "100%",
             display: "flex",
