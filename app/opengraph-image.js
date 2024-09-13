@@ -13,7 +13,7 @@ export default async function Image(){
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundSize: "contain",
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             border:"5px solid red",
