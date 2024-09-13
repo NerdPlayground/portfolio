@@ -3,7 +3,7 @@ import "@/app/ui/media-queries.scss";
 
 export const metadata = {
     title: "George Mobisa",
-    description: "Get to know a little bit more about the man behind the name",
+    description: "Software Developer | Frontend 🎨 | Backend 🛠 | Full Stack 🤩 - Developing optimized applications to make your life easier",
     metadataBase: process.env.WEBSITE_URL,
     keywords:[
         "web development","freelance web developer",
