@@ -13,7 +13,7 @@ export default async function Image(){
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "#F5F5F5",
-            backgroundSize: "contain",
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/opengraph-image.png)`,
