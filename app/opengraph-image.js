@@ -13,7 +13,8 @@ export default async function Image(){
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundSize: "cover",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/developer-activity-amico.svg)`,
         }}>
