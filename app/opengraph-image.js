@@ -13,9 +13,9 @@ export default async function Image(){
             alignItems: "center",
             justifyContent: "center",
             // backgroundColor: "#F5F5F5",
-            backgroundSize: "50% 50%",
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            // backgroundPosition: "center",
+            backgroundPosition: "center",
             backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/developer-activity-amico.svg)`,
         }}>
         </div>),
