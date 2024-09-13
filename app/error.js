@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import { blackOpsOne, courierPrime } from "./ui/fonts";
 
 export default function Error({ error, reset }){
