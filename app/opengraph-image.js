@@ -7,17 +7,17 @@ export const alt="Software Developer | Frontend 🎨 | Backend 🛠 | Fullstack 
 export default async function Image(){
     return new ImageResponse(
         (<div style={{
-            background: "#F5F5F5",
             width: "100%",
             height: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundSize: "cover",
+            backgroundColor: "#F5F5F5",
+            backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            border:"5px solid red",
             backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/developer-activity-amico.svg)`,
+            border:"5px solid red",
         }}>
         </div>),
         {...size}
