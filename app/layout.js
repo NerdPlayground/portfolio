@@ -10,10 +10,6 @@ export const metadata = {
         "frontend developer","Next.js web development",
         "backend developer","RESTful API development",
     ],
-    openGraph:{
-        url: process.env.WEBSITE_URL,
-        siteName: "George Mobisa's Portfolio",
-    }
 };
   
 export default function RootLayout({ children }) {
