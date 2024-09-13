@@ -13,11 +13,10 @@ export default async function Image(){
             alignItems: "center",
             justifyContent: "center",
             // backgroundColor: "#F5F5F5",
-            backgroundSize: "cover",
+            backgroundSize: "100% 100%",
             backgroundRepeat: "no-repeat",
             // backgroundPosition: "center",
             backgroundImage: `url(${process.env.WEBSITE_URL}/opengraph/developer-activity-amico.svg)`,
-            // border:"5px solid red",
         }}>
         </div>),
         {...size}
