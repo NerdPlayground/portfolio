@@ -25,8 +25,7 @@ export const data={
                 "freecodecamp":"https://www.freecodecamp.org/nerds-playground",
                 "github":"https://github.com/NerdPlayground",
                 "codepen":"https://codepen.io/nerdsplayground",
-                "twitter":"https://twitter.com/nplayground_",
-                "instagram":"https://www.instagram.com/nplayground_/"
+                "linkedin":"https://www.linkedin.com/in/george-mobisa-857a842b5/",
             }
         }
     },
