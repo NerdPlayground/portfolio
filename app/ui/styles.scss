@@ -13,8 +13,6 @@
     --black: #333333;
     --light-black: #626262;
     --white: #F5F5F5;
-    --neu-light: #F5F5F5;
-    --neu-shadows: #626262;
 }
 
 body{
@@ -325,13 +323,15 @@ body{
 #skills span{
     --blur: 0px;
     --distance: 3px;
+    --neu-light: #F5F5F5;
+    --neu-shadows: #626262;
     margin-right: 10px;
     margin-bottom: 10px;
     padding-block: 5px;
     padding-inline: 10px;
     @include text(19px);
     border-radius: 5px;
-    @include border($style:dashed);
+    border: 1px solid #626262;
     background: var(--white);
     box-shadow:  var(--distance) var(--distance) var(--blur) var(--neu-shadows),
     calc(var(--distance) * -1) calc(var(--distance) * -1) var(--blur) var(--neu-light);
@@ -400,13 +400,21 @@ body{
 
 // ====================SHOWCASE====================
 
+$tile-shadows: #acacac;
+
 .project-tile,
 .experience-tile{
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     @include dimensions(100%,100%);
     @include flex(column,flex-start,flex-start);
     border-radius: 10px;
-    @include border($width:2px);
+    --blur: 10px;
+    --distance: 5px;
+    --neu-light: var(--white);
+    border: 1px solid $tile-shadows;
+    background: var(--white);
+    box-shadow:  var(--distance) var(--distance) var(--blur) $tile-shadows,
+    calc(var(--distance) * -1) calc(var(--distance) * -1) var(--blur) var(--neu-light);
 }
 
 .project-tile:last-of-type,
@@ -467,7 +475,7 @@ body{
 
 .objectives{
     list-style-position: inside;
-    border-top: 2px dashed var(--black);
+    border-top: 1px solid $tile-shadows;
 }
 
 .objectives li{
@@ -481,7 +489,7 @@ body{
     @include dimensions(100%,100%);
     flex-wrap: wrap;
     @include flex(row,center,flex-start);
-    border-top: 2px dashed var(--black);
+    border-top: 1px solid $tile-shadows;
 }
 
 .tools span{
@@ -489,8 +497,11 @@ body{
     padding-block: 2.5px;
     margin-right: 10px;
     margin-bottom: 10px;
-    color: var(--white);
+    color: var(--black);
     font-weight: bold;
+    color: #F5F5F5;
+    background: #2E8B57;
+    border-radius: 5px;
 }
 
 // ====================CONTACT====================

@@ -1,6 +1,5 @@
 "use client";
 import Contact from "./contact";
-import styles from "./colors.module.css";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
 
 function Header({ name, link, start_date, end_date, ongoing }){
@@ -26,17 +25,15 @@ function Body({ description, objectives, tools }){
     return (
         <>
             <div className="description">{description}</div>
-            <ul className="objectives">{
-                objectives.map(objective=>
-                    <li key={objective}>{objective}</li>
-                )
-            }</ul>
+            {objectives.length?(
+                <ul className="objectives">{
+                    objectives.map(objective=>
+                        <li key={objective}>{objective}</li>
+                    )
+                }</ul>
+            ):""}
             <div className="tools">{
-                tools.map(tool=>
-                    <span key={tool} className={styles[tool.toLowerCase()]}>
-                        {tool}
-                    </span>
-                )
+                tools.map(tool=><span key={tool}>{tool}</span>)
             }</div>
         </>
     )
