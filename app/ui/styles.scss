@@ -404,7 +404,7 @@ $tile-shadows: #acacac;
 
 .project-tile,
 .experience-tile{
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     @include dimensions(100%,100%);
     @include flex(column,flex-start,flex-start);
     border-radius: 10px;
