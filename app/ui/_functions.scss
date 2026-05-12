@@ -1,3 +1,9 @@
+$red: #F50000;
+$green: #00F500;
+$black: #333333;
+$light-black: #626262;
+$white: #F5F5F5;
+
 // set dimensions
 @mixin dimensions($width:fit-content,$max-width:fit-content,$height:fit-content,$max-height:fit-content){
     width: $width;
@@ -15,7 +21,7 @@
 }
 
 // set text properties
-@mixin text($size,$line:normal,$color:var(--black)){
+@mixin text($size,$line:normal,$color:$black){
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -33,6 +39,6 @@
 }
 
 // set border
-@mixin border($color:var(--black),$width:1px,$style:solid){
+@mixin border($color:$black,$width:1px,$style:solid){
     border: $width $style $color;
 }

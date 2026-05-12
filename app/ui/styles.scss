@@ -7,17 +7,9 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-:root{
-    --red: #F50000;
-    --green: #00F500;
-    --black: #333333;
-    --light-black: #626262;
-    --white: #F5F5F5;
-}
-
 body{
     overflow: hidden;
-    background-color: var(--black);
+    background-color: $black;
     @include flex(column,center,center);
     @include dimensions(100vw,100vw,100vh,100vh);
 }
@@ -25,7 +17,7 @@ body{
 #root{
     position: relative;
     overflow: hidden;
-    background-color: var(--white);
+    background-color: $white;
     @include flex(column,center,center);
     @include dimensions(100%,1500px,100%,800px);
 }
@@ -37,7 +29,7 @@ body{
     @include flex(row,center,center);
     @include dimensions(200px,200px,200px,200px);
     span{
-        background-color: var(--black);
+        background-color: $black;
         @include dimensions(10px,10px,50px,50px);
         animation: scale 0.9s ease-in-out infinite;
         &:nth-child(2){ animation-delay: -0.8s; }
@@ -79,11 +71,11 @@ body{
     display: block;
     padding-block: 5px;
     padding-inline: 10px;
-    color: var(--black);
+    color: $black;
     text-align: center;
     border-radius: 5px;
     @include border($width:2px);
-    box-shadow: 0 3px var(--black);
+    box-shadow: 0 3px $black;
 }
 
 .button:focus,
@@ -91,16 +83,16 @@ body{
 .disabled-button{
     outline: none;
     transform: translateY(3px);
-    box-shadow: 0 0 var(--black);
+    box-shadow: 0 0 $black;
 }
 
 .success-message{
     text-align: center;
-    border-color: var(--green) !important;
+    border-color: $green !important;
 }
 
 .error-message{
-    border-color: var(--red) !important;
+    border-color: $red !important;
 }
 
 // ====================NAVBAR====================
@@ -156,8 +148,8 @@ body{
     @include dimensions($height:100%,$max-height:100%);
     @include flex(column,flex-start,flex-start);
     display: none;
-    background-color: var(--white);
-    border-left: 2px solid var(--black);
+    background-color: $white;
+    border-left: 2px solid $black;
     transition: right 0.5s linear;
 }
 
@@ -186,14 +178,15 @@ body{
 
 // ====================MAIN CONTENT====================
 
+$section1: 50%;
+$section2: calc(100% - #{$section1});
+
 #main-content{
-    --section1: 50%;
-    --section2: calc(100% - var(--section1));
     overflow: hidden;
     @include dimensions(100%,100%);
     flex-grow: 1;
     @include flex(row,flex-start,flex-start);
-    background-color: var(--white);
+    background-color: $white;
 }
 
 #main-content::-webkit-scrollbar{
@@ -206,7 +199,7 @@ body{
     overflow: auto;
     padding-inline: 25px;
     padding-block: 0 15px;
-    @include dimensions(var(--section1),var(--section1),100%,100%);
+    @include dimensions($section1,$section1,100%,100%);
     flex-wrap: wrap;
     @include flex(row,$justify:flex-start);
 }
@@ -216,15 +209,15 @@ body{
 }
 
 #welcome::-webkit-scrollbar-thumb{
-    background-color: var(--light-black);
-    border-left: 3px solid var(--white);
-    border-right: 3px solid var(--white);
+    background-color: $light-black;
+    border-left: 3px solid $white;
+    border-right: 3px solid $white;
 }
 
 #welcome::-webkit-scrollbar-track{
-    background-color: var(--black);
-    border-left: 8px solid var(--white);
-    border-right: 8px solid var(--white);
+    background-color: $black;
+    border-left: 8px solid $white;
+    border-right: 8px solid $white;
 }
 
 .welcome{
@@ -238,11 +231,13 @@ body{
 
 // ====================INTRODUCTION====================
 
+$font-size: 24px;
+$name: calc(#{$font-size} + 4px);
+
 .block-title{
-    --font-size: 24px;
     margin-bottom: 15px;
     font-weight: normal;
-    @include text(var(--font-size),var(--font-size));
+    @include text($font-size,$font-size);
 }
 
 #introduction{
@@ -250,8 +245,7 @@ body{
 }
 
 #introduction h1{
-    --name: calc(var(--font-size) + 4px);
-    min-height: calc(var(--font-size) + 6px);
+    min-height: calc(#{$font-size} + 6px);
     flex-wrap: wrap;
     @include flex(row,flex-end);
 }
@@ -267,7 +261,7 @@ body{
 
 #name,#static-name{
     display: block;
-    @include text(var(--name),var(--name));
+    @include text($name,$name);
 }
 
 #static-name{
@@ -276,11 +270,8 @@ body{
 
 #cursor{
     display: block;
-    @include dimensions(
-        24px,24px,
-        var(--name),var(--name)
-    );
-    border-bottom: 5px solid var(--black);
+    @include dimensions(24px,24px,$name,$name);
+    border-bottom: 5px solid $black;
     opacity: 0;
     animation: blink 0.5s linear infinite;
 }
@@ -307,11 +298,11 @@ body{
 }
 
 #skill-set h2 span:first-child{
-    text-decoration: line-through var(--red) solid 7px;
+    text-decoration: line-through $red solid 7px;
 }
 
 #skill-set h2 span:last-child{
-    color: var(--red);
+    color: $red;
 }
 
 #skills{
@@ -321,10 +312,10 @@ body{
 }
 
 #skills span{
-    --blur: 0px;
-    --distance: 3px;
-    --neu-light: #F5F5F5;
-    --neu-shadows: #626262;
+    $blur: 0px;
+    $distance: 3px;
+    $neu-light: #F5F5F5;
+    $neu-shadows: #626262;
     margin-right: 10px;
     margin-bottom: 10px;
     padding-block: 5px;
@@ -332,45 +323,46 @@ body{
     @include text(19px);
     border-radius: 5px;
     border: 1px solid #626262;
-    background: var(--white);
-    box-shadow:  var(--distance) var(--distance) var(--blur) var(--neu-shadows),
-    calc(var(--distance) * -1) calc(var(--distance) * -1) var(--blur) var(--neu-light);
+    background: $white;
+    box-shadow:  $distance $distance $blur $neu-shadows,
+    calc(#{$distance} * -1) calc(#{$distance} * -1) $blur $neu-light;
 }
 
 // ====================SOCIALS====================
 
+$border-radius: 5px;
+
 #socials{
-    --border-radius: 5px;
     align-self: flex-end;
     flex-wrap: wrap;
     @include flex(row,center,flex-start);
 }
 
 .social-link{
-    --padding: 5px;
+    $padding: 5px;
     margin-right: 25px;
     margin-bottom: 10px;
     padding: 5px;
     @include dimensions();
     @include flex(column,center,center);
-    color: var(--black);
+    color: $black;
     text-decoration: none;
     @include border($width:2px);
-    border-radius: calc(var(--border-radius) + var(--padding));
+    border-radius: calc(#{$border-radius} + #{$padding});
 }
 
 .social-link img{
     padding: 5px;
     object-fit: contain;
     @include border($style:dashed);
-    border-radius: var(--border-radius);
+    border-radius: $border-radius;
 }
 
 // ====================CONTENT====================
 
 #content-overflow{
     overflow: hidden;
-    @include dimensions(var(--section2),var(--section2),100%,100%);
+    @include dimensions($section2,$section2,100%,100%);
 }
 
 #content-section{
@@ -392,7 +384,7 @@ body{
     flex: 0 0 100%;
     transform: translate3d(0, 0, 0);
     @include text(19px);
-    background-color: var(--white);
+    background-color: $white;
     &::-webkit-scrollbar{
         display: none;
     }
@@ -408,13 +400,13 @@ $tile-shadows: #acacac;
     @include dimensions(100%,100%);
     @include flex(column,flex-start,flex-start);
     border-radius: 10px;
-    --blur: 10px;
-    --distance: 5px;
-    --neu-light: var(--white);
+    $blur: 10px;
+    $distance: 5px;
+    $neu-light: $white;
     border: 1px solid $tile-shadows;
-    background: var(--white);
-    box-shadow:  var(--distance) var(--distance) var(--blur) $tile-shadows,
-    calc(var(--distance) * -1) calc(var(--distance) * -1) var(--blur) var(--neu-light);
+    background: $white;
+    box-shadow:  $distance $distance $blur $tile-shadows,
+    calc(#{$distance} * -1) calc(#{$distance} * -1) $blur $neu-light;
 }
 
 .project-tile:last-of-type,
@@ -428,10 +420,10 @@ $tile-shadows: #acacac;
     flex-wrap: wrap-reverse;
     @include flex(row,baseline,flex-start);
     font-weight: bold;
-    color: var(--white);
+    color: $white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: var(--black);
+    background-color: $black;
 }
 
 .period{
@@ -441,7 +433,7 @@ $tile-shadows: #acacac;
 
 .title{
     display: inline-block;
-    color: var(--white);
+    color: $white;
     text-decoration: none;
     @include dimensions();
 }
@@ -497,7 +489,7 @@ $tile-shadows: #acacac;
     padding-block: 2.5px;
     margin-right: 10px;
     margin-bottom: 10px;
-    color: var(--black);
+    color: $black;
     font-weight: bold;
     color: #F5F5F5;
     background: #2E8B57;
@@ -505,6 +497,10 @@ $tile-shadows: #acacac;
 }
 
 // ====================CONTACT====================
+
+$label: 20%;
+$space: 25px;
+$input: calc(100% - #{$space} - #{$label});
 
 .contact{
     margin-bottom: 25px;
@@ -520,9 +516,6 @@ form.contact{
 }
 
 .form-group{
-    --label: 20%;
-    --space: 25px;
-    --input: calc(100% - var(--space) - var(--label));
     margin-bottom: 15px;
     @include dimensions(100%,100%);
     @include flex(row,baseline,flex-start);
@@ -537,21 +530,21 @@ form.contact{
     padding-block: 5px;
     padding-inline: 10px;
     @include text(18px);
-    border: 2px solid var(--black);
+    border: 2px solid $black;
 }
 
 .form-group label{
-    margin-right: var(--space);
-    @include dimensions(var(--label),var(--label));
+    margin-right: $space;
+    @include dimensions($label,$label);
     font-weight: bold;
-    color: var(--white);
-    background-color: var(--black);
+    color: $white;
+    background-color: $black;
 }
 
 .input{
-    background-color: var(--white);
-    min-width: var(--input);
-    @include dimensions(var(--input),var(--input));
+    background-color: $white;
+    min-width: $input;
+    @include dimensions($input,$input);
 }
 
 .input:active,.input:focus{
