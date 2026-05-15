@@ -1,5 +1,5 @@
 import { useActionState, useEffect, useState } from "react";
-import { sendMessage } from "../lib/actions";
+import { sendMessage } from "@lib/actions";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
 
 export default function Contact({ email, first_name }){
