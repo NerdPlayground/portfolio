@@ -1,6 +1,6 @@
 import Welcome from "./welcome";
 import ShowCase from "./showcase";
-import { fetchData } from "../lib/actions";
+import { fetchData } from "@lib/actions";
 
 export default async function Content(){
     const

@@ -1,4 +1,4 @@
-import Content from "./content/main-content";
+import Content from "./content/component";
 import Navigation from "./navigation/navbar";
 
 export default function Root(){
