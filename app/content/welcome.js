@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useEffect } from "react";
-import { courierPrime, blackOpsOne, cutiveMono } from "../ui/fonts";
+import { useContext, useEffect, useRef } from "react";
+import { courierPrime, blackOpsOne, cutiveMono } from "@ui/fonts";
+import { Reference } from "@lib/context";
 
 function Socials({ socials }){
     return (
@@ -89,9 +90,12 @@ function Introduction({ first_name, last_name, bio }){
 
 export default function Welcome({ details }){
     const profile=details.profile;
-    
+    const welcome=useRef(null);
+    const { addRef }=useContext(Reference);
+    useEffect(()=>{addRef({welcome})},[addRef]);
+
     return (
-        <section id="welcome">
+        <section id="welcome" ref={welcome}>
             <Introduction
                 first_name={details.first_name}
                 last_name={details.last_name}
