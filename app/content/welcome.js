@@ -92,7 +92,7 @@ export default function Welcome({ details }){
     const profile=details.profile;
     const welcome=useRef(null);
     const { addRef }=useContext(Reference);
-    useEffect(()=>{addRef({welcome})},[addRef]);
+    useEffect(()=>{addRef({welcome:welcome.current.style})},[addRef]);
 
     return (
         <section id="welcome" ref={welcome}>

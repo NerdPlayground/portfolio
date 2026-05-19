@@ -24,7 +24,7 @@ function NavLinks({ navBar }){
 export function Navpane({ toggleNavPane }){
     const navpane=useRef(null);
     const { addRef }=useContext(Reference);
-    useEffect(()=>addRef({navpane}),[addRef]);
+    useEffect(()=>addRef({navpane:navpane.current.style}),[addRef]);
 
     return (
         <nav id="nav-pane" ref={navpane}>
@@ -42,7 +42,7 @@ export function Navpane({ toggleNavPane }){
 export function Navbar({ toggleNavPane }){
     const navbar=useRef();
     const { addRef }=useContext(Reference);
-    useEffect(()=>addRef({navbar}),[addRef]);
+    useEffect(()=>addRef({navbar:navbar.current.style}),[addRef]);
 
     return (
         <nav id="navbar" ref={navbar}>

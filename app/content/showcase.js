@@ -108,7 +108,7 @@ function Projects({ projects }){
 export default function ShowCase({ email, first_name, projects, experiences }){
     const showcase=useRef(null);
     const { addRef }=useContext(Reference);
-    useEffect(()=>addRef({showcase}),[addRef]);
+    useEffect(()=>addRef({showcase:showcase.current.style}),[addRef]);
 
     return (
         <section id="content-overflow" ref={showcase}>
