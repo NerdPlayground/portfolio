@@ -1,5 +1,6 @@
 import Content from "./content/component";
-import { ReferenceProvider } from "./lib/context";
+import Overlay from "@lib/components/Overlay/component";
+import { ReferenceProvider } from "@lib/context";
 import Navigation from "./navigation/navbar";
 
 export default function Root(){
@@ -7,6 +8,7 @@ export default function Root(){
         <ReferenceProvider>
             <Navigation/>
             <Content/>
+            <Overlay/>
         </ReferenceProvider>
     );
 }

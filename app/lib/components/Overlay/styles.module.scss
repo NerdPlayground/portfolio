@@ -1,0 +1,9 @@
+@use "@ui/functions.scss" as *;
+
+.overlay{
+    position: absolute;
+    @include dimensions($square:100%);
+    @include flex(row,center,center);
+    visibility: hidden;
+    background-color: transparent;
+}
