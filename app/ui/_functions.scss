@@ -1,7 +1,7 @@
 @use "sass:list";
 
 $red: #F50000;
-$green: #00F500;
+$green: #2E8B57;
 $black: #333333;
 $light-black: #626262;
 $white: #F5F5F5;
@@ -83,4 +83,19 @@ $white: #F5F5F5;
     background-size: cover;
     background-image: url($url);
     background-position: center;
+}
+
+@mixin cardStyle(
+    $blur:10px,
+    $distance:5px,
+    $radius:10px,
+    $dark-shadows:#acacac,
+    $light-shadows:$white,
+    $background-color:$white,
+){
+    background-color: $background-color;
+    border-radius: $radius;
+    border: 1px solid $dark-shadows;
+    box-shadow:  $distance $distance $blur $dark-shadows,
+    calc(#{$distance} * -1) calc(#{$distance} * -1) $blur $light-shadows;
 }
