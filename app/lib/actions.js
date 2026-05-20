@@ -86,6 +86,10 @@ export async function sendMessage(prevState,formData){
     }
 }
 
+export async function logoutAccount(){
+    (await cookies()).delete(process.env.COOKIE_AUTH);
+}
+
 export async function loginAccount(prevState,formData){
     const validatedData=LoginSchema.safeParse({
         username:formData.get("username"),

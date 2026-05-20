@@ -4,6 +4,7 @@ import { useContext, useRef, useEffect } from "react";
 import { Reference } from "@lib/context";
 import Image from "next/image";
 import { blurBackground } from "@lib/functions";
+import { logoutAccount } from "../lib/actions";
 
 function AuthButton({ navBar,toggleNavPane }){
     const size=22;
@@ -17,12 +18,21 @@ function AuthButton({ navBar,toggleNavPane }){
         if(!navBar) toggleNavPane();
     }
 
+    async function openLogoutPrompt(){
+        await logoutAccount();
+        window.location.reload();
+    }
+
     return(navBar?
-        <button className={class_list} onClick={openLoginPrompt}>
-            <Image src="/login.png" alt="Login Account" width={size} height={size}/>
+        <button className={class_list} onClick={refs?.token?openLogoutPrompt:openLoginPrompt}>
+            <Image 
+                width={size} height={size}
+                src={`/${refs?.token?'logout':'login'}.png`} 
+                alt={`${refs?.token?'Logout':'Login'} Account`} 
+            />
         </button>:
-        <a className={class_list} onClick={openLoginPrompt}>{
-            `Login`
+        <a className={class_list} onClick={refs?.token?openLogoutPrompt:openLoginPrompt}>{
+            refs?.token?"Logout":"Login"
         }</a>
     );
 }
