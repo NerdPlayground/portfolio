@@ -1,13 +1,11 @@
-const
-    BASE_URL="https://portfolio-api-vwdg.onrender.com/portfolio-api/v1",
-    PORTFOLIO_USER=process.env.PORTFOLIO_USER,
-    USER=`${BASE_URL}/users/${PORTFOLIO_USER}`;
+const BASE_URL="https://theboarsin.alwaysdata.net/portfolio-api/v1";
 
 export const endpoints=Object.freeze({
     contact: `${BASE_URL}/contact-user/`,
-    details: `${USER}/`,
-    projects: `${USER}/projects/`,
-    experiences: `${USER}/experiences/`,
+    login: `${BASE_URL}/login/`,
+    details: `${BASE_URL}/user/`,
+    projects: `${BASE_URL}/projects/`,
+    experiences: `${BASE_URL}/experiences/`,
 });
 
 export const data={
