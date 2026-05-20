@@ -15,7 +15,10 @@ export default function Login(){
 
     useEffect(()=>{
         setMessage(!!formState);
-        if(formState?.success) setTimeout(()=>setMessage(false),15000);
+        if(formState?.success) setTimeout(()=>{
+            setMessage(false);
+            window.location.reload();
+        },5000)
     },[formState]);
 
     function closeLoginPrompt(){
