@@ -64,6 +64,29 @@ body{
     }
 }
 
+@mixin result($color){
+    min-height: 75px;
+    color: $white !important;
+    @include cardStyle(
+        $radius: 5px,
+        $background-color: $color,
+    );
+}
+
+.success-message{
+    text-align: center;
+    @include result($green);
+    @include flex(column,center,center);
+}
+
+.error-message{
+    @include result($red);
+}
+
+.error-input-field{
+    border-color: $red !important;
+}
+
 // ====================BUTTON====================
 
 .button{
@@ -84,24 +107,6 @@ body{
     outline: none;
     transform: translateY(3px);
     box-shadow: 0 0 $black;
-}
-
-@mixin result($color){
-    min-height: 75px;
-    color: $white !important;
-    @include cardStyle(
-        $radius: 5px,
-        $background-color: $color,
-    );
-}
-
-.success-message{
-    text-align: center;
-    @include result($green);
-}
-
-.error-message{
-    @include result($red);
 }
 
 // ====================NAVBAR====================
@@ -598,7 +603,7 @@ form.contact > input,.submit-button{
     font-weight: bold;
     white-space: normal;
     @include dimensions(100%,100%);
-    ol{
+    ul{
         list-style-position: inside;
     }
 }

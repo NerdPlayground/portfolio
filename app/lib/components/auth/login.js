@@ -40,9 +40,9 @@ export default function Login(){
                     <input
                         id="username" name="username" type="text"
                         defaultValue={formState?.form_data?.get("username")}
-                        placeholder="jdoeaccnt"
+                        placeholder="jdoeaccnt" required
                         className={`input ${cutiveMono.className}
-                        ${formState?.errors?.username? "error-message":""}`}
+                        ${formState?.errors?.username? "error-input-field":""}`}
                     />
                 </div>
                 <div className={`form-group ${styles.fg_login}`}>
@@ -50,16 +50,16 @@ export default function Login(){
                     <input
                         id="password" name="password" type="password"
                         defaultValue={formState?.form_data?.get("password")}
-                        placeholder="v3r£5Tr0NP@$$"
+                        placeholder="v3r£5Tr0NP@$$" required
                         className={`input ${cutiveMono.className}
-                        ${formState?.errors?.username? "error-message":""}`}
+                        ${formState?.errors?.password? "error-input-field":""}`}
                     />
                 </div>
                 <div className={`form_buttons ${styles.fb_login}`}>
                     <input
                         type="submit"
                         disabled={pending}
-                        value={pending?"Authenticating...":"Login"}
+                        value={pending?"...":"Login"}
                         className={`button submit-button ${cutiveMono.className} ${pending? "disabled-button":""}`}
                     />
                     <button 
@@ -72,13 +72,13 @@ export default function Login(){
                 {message && 
                 <div id="form-result" className={`${formState?.success?"success":"error"}-message`}>
                     {formState.message+(`${formState.success?" :)":";"}`)}
-                    <ol>
+                    <ul>
                         {!formState.success && 
                             Object.entries(formState.errors)
                             .map(([field,errors])=>errors
                             .map(error=><li key={error}>{error}</li>))
                         }
-                    </ol>
+                    </ul>
                 </div>}
             </form>
         </div>
