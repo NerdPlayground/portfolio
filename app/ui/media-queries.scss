@@ -1,4 +1,4 @@
-@import "functions.scss";
+@use "functions.scss" as *;
 
 @media (prefers-reduced-motion:no-preference){
     *{ scroll-behavior: smooth; }
@@ -65,7 +65,7 @@
         visibility: hidden;
     }
     
-    #links a{
+    #links a,#links button{
         display: none;
     }
     

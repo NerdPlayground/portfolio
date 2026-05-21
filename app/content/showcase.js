@@ -1,6 +1,8 @@
 "use client";
 import Contact from "./contact";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
+import { useContext, useEffect, useRef } from "react";
+import { Reference } from "../lib/context";
 
 function Header({ name, link, start_date, end_date, ongoing }){
     const shorten_date=(date)=>{
@@ -104,8 +106,12 @@ function Projects({ projects }){
 }
 
 export default function ShowCase({ email, first_name, projects, experiences }){
+    const showcase=useRef(null);
+    const { addRef }=useContext(Reference);
+    useEffect(()=>addRef({showcase:showcase.current.style}),[addRef]);
+
     return (
-        <section id="content-overflow">
+        <section id="content-overflow" ref={showcase}>
             <section id="content-section">
                 <Projects projects={projects}/>
                 <Experience experiences={experiences}/>
