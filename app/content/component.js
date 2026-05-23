@@ -2,11 +2,11 @@ import Welcome from "./welcome";
 import ShowCase from "./showcase";
 import { fetchData } from "@lib/actions";
 
-export default async function Content(){
+export default async function Content({ token }){
     const
-        details=await fetchData("details"),
-        projects=await fetchData("projects"),
-        experiences=await fetchData("experiences");
+        details=await fetchData("details",token),
+        projects=await fetchData("projects",token),
+        experiences=await fetchData("experiences",token);
 
     return (
         <main id="main-content">

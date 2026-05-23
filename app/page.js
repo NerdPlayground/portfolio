@@ -12,7 +12,7 @@ export default async function Root(){
     return(
         <ReferenceProvider initial={{token:auth?.token}}>
             <Navigation/>
-            <Content/>
+            <Content token={auth?.token}/>
             <Overlay/>
         </ReferenceProvider>
     );
