@@ -136,6 +136,22 @@ export async function loginAccount(prevState,formData){
     }
 }
 
+export async function fetchDetails(token){
+    const response=await fetch(endpoints.details,{
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization":`Bearer ${token}`
+        },
+    });
+
+    const results=await response.json();
+    if(!response.ok){
+        console.log("There's an issue :)");
+    }
+    return results;
+}
+
 export async function fetchData(endpoint){
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return data[endpoint];
