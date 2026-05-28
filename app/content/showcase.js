@@ -50,7 +50,8 @@ function Experience({ experiences }){
             <span className={`content-title ${blackOpsOne.className}`}>
                 EXPERIENCE
             </span>
-            {experiences.map(experience=>
+            {experiences?'':<div className={`experience-tile empty`}></div>}
+            {experiences?.map(experience=>
                 <div
                     key={experience.link}
                     className="experience-tile"
@@ -82,7 +83,8 @@ function Projects({ projects }){
             <span className={`content-title ${blackOpsOne.className}`}>
                 PROJECTS
             </span>
-            {projects.map(project=>
+            {projects?'':<div className={`project-tile empty`}></div>}
+            {projects?.map(project=>
                 <div
                     key={project.link}
                     className="project-tile"

@@ -6,8 +6,8 @@ import { Reference } from "@lib/context";
 
 function Socials({ socials }){
     return (
-        <div id="socials" className="welcome">{
-            Object.entries(socials).map(socialLink=>
+        <div id="socials" className={`welcome ${socials?'':'empty'}`}>{
+            Object.entries(socials ?? {}).map(socialLink=>
                 <a
                     key={socialLink[0]}
                     target="_blank"
@@ -31,8 +31,8 @@ function SkillSet({ skills }){
             <h2 className={`block-title  ${courierPrime.className}`}>
                 Jack of <span>all</span> <span>MOST</span> trades.
             </h2>
-            <div id="skills">{
-                skills.map(skill=>
+            <div id="skills" className={`${skills?'':'empty'}`}>{
+                skills?.map(skill=>
                     <span
                         key={skill}
                         className={`${cutiveMono.className}`}
@@ -46,7 +46,6 @@ function SkillSet({ skills }){
 }
 
 function Introduction({ first_name, last_name, bio }){
-    // controls the typing effect of the name
     useEffect(()=>{
         let name=Array.from(`${first_name} ${last_name}`.toUpperCase());
         let nameContainer=document.getElementById("name");
@@ -80,9 +79,9 @@ function Introduction({ first_name, last_name, bio }){
             </h1>
             <div
                 id="description"
-                className={`${cutiveMono.className}`}
+                className={`${cutiveMono.className} ${bio?'':'empty'}`}
             >{
-                `...${bio[0].toLowerCase()+bio.slice(1)}.`
+                bio?`...${bio[0].toLowerCase()+bio.slice(1)}.`:''
             }</div>
         </div>
     );

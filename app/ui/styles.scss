@@ -22,6 +22,31 @@ body{
     @include dimensions(100%,1500px,100%,800px);
 }
 
+// ====================EMPTY======================
+
+.empty{
+    border-radius: 5px;
+    border: 1px solid $black;
+}
+
+.empty#description{
+    min-height: 125px;
+}
+
+.empty#skills{
+    min-height: 170px;
+}
+
+.empty#socials{
+    min-height: 70px;
+}
+
+.empty.project-tile,
+.empty.experience-tile,
+form.empty{
+    min-height: 200px;
+}
+
 // ====================LOADING====================
 
 .loader{

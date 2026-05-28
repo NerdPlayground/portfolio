@@ -23,7 +23,7 @@ export default function Contact({ email, first_name }){
                 If you have any interesting projects that you need a hand in 
                 or if you just want to say hello, don't hesitate to reach out;
             `}</p>
-            <form className="contact" action={formAction}>
+            <form className={`contact ${email?'':'empty'}`} action={formAction}>{email?<>
                 <div className="form-group">
                     <label htmlFor="username">Name:</label>
                     <input
@@ -75,7 +75,7 @@ export default function Contact({ email, first_name }){
                         }
                     </ol>
                 </div>}
-            </form>
+            </>:''}</form>
         </div>
     );
 }
