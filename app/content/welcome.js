@@ -89,7 +89,7 @@ function Introduction({ first_name, last_name, bio }){
 }
 
 export default function Welcome({ details }){
-    const profile=details.profile;
+    const profile=details?.profile;
     const welcome=useRef(null);
     const { addRef }=useContext(Reference);
     useEffect(()=>{addRef({welcome:welcome.current.style})},[addRef]);
@@ -97,15 +97,15 @@ export default function Welcome({ details }){
     return (
         <section id="welcome" ref={welcome}>
             <Introduction
-                first_name={details.first_name}
-                last_name={details.last_name}
-                bio={profile.bio}
+                first_name={details?.first_name}
+                last_name={details?.last_name}
+                bio={profile?.bio}
             />
             <SkillSet
-                skills={profile.skills}
+                skills={profile?.skills}
             />
             <Socials
-                socials={profile.socials}
+                socials={profile?.socials}
             />
         </section>
     );

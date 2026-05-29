@@ -12,8 +12,8 @@ export default async function Content({ token }){
         <main id="main-content">
             <Welcome details={details}/>
             <ShowCase
-                email={details.email}
-                first_name={details.first_name}
+                email={details?.email}
+                first_name={details?.first_name}
                 projects={projects}
                 experiences={experiences}
             />
