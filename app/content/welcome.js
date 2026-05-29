@@ -47,6 +47,7 @@ function SkillSet({ skills }){
 
 function Introduction({ first_name, last_name, bio }){
     useEffect(()=>{
+        if(!(first_name && last_name)) return;
         let name=Array.from(`${first_name} ${last_name}`.toUpperCase());
         let nameContainer=document.getElementById("name");
         let styles=getComputedStyle(nameContainer);
@@ -69,7 +70,7 @@ function Introduction({ first_name, last_name, bio }){
         <div id="introduction" className="welcome">
             <h1 className={`block-title ${courierPrime.className}`}>
                 <span id="hello">{`Hello there, I'm`}</span>
-                <span>
+                <span className={`${first_name && last_name?'':'empty empty-name'}`}>
                     <span id="name" className={`${blackOpsOne.className}`}></span>
                     <span id="cursor"></span>
                     <span id="static-name" className={`${blackOpsOne.className}`}>

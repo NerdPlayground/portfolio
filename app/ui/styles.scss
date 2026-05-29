@@ -1,5 +1,8 @@
 @use "functions.scss" as *;
 
+$font-size: 24px;
+$name: calc(#{$font-size} + 4px);
+
 *{
     margin: 0px;
     padding: 0px;
@@ -27,6 +30,14 @@ body{
 .empty{
     border-radius: 5px;
     border: 1px solid $black;
+}
+
+.empty-name{
+    min-height: $name;
+    min-width: calc(#{$name} * 10);
+    & > #cursor{
+        display: none;
+    }
 }
 
 .empty#description{
@@ -277,9 +288,6 @@ $section2: calc(100% - #{$section1});
 }
 
 // ====================INTRODUCTION====================
-
-$font-size: 24px;
-$name: calc(#{$font-size} + 4px);
 
 .block-title{
     margin-bottom: 15px;
