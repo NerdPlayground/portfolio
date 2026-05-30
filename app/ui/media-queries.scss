@@ -9,6 +9,12 @@
         justify-content: space-between;
     }
 
+    #links{
+        & > img:first-of-type{
+            display: none;
+        }
+    }
+
     #logo{
         display: block;
     }
@@ -37,7 +43,7 @@
     }
 
     .content-title{
-        display: block;
+        display: flex;
     }
 
     .content-container{

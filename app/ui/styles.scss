@@ -25,6 +25,14 @@ body{
     @include dimensions(100%,1500px,100%,800px);
 }
 
+// ====================CRUD=======================
+
+.crud-icons{
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: $black;
+}
+
 // ====================EMPTY======================
 
 .empty{
@@ -426,9 +434,13 @@ $border-radius: 5px;
 }
 
 .content-title{
+    @include flex(row,center,flex-start);
     display: none;
     margin-bottom: 25px;
     @include text(30px);
+    & > img{
+        margin-inline: 10px;
+    }
 }
 
 .content-container{
@@ -511,7 +523,8 @@ $tile-shadows: #acacac;
 }
 
 .objectives,
-.description{
+.description,
+.edits{
     padding: 10px;
     @include dimensions(100%,100%);
 }
@@ -549,6 +562,11 @@ $tile-shadows: #acacac;
     color: #F5F5F5;
     background: #2E8B57;
     border-radius: 5px;
+}
+
+.edits{
+    border-top: 1px solid $tile-shadows;
+    @include flex(row,center,flex-end);
 }
 
 // ====================CONTACT====================

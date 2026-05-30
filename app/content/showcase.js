@@ -3,6 +3,7 @@ import Contact from "./contact";
 import { blackOpsOne, cutiveMono } from "../ui/fonts";
 import { useContext, useEffect, useRef } from "react";
 import { Reference } from "../lib/context";
+import Image from "next/image";
 
 function Header({ name, link, start_date, end_date, ongoing }){
     const shorten_date=(date)=>{
@@ -24,6 +25,7 @@ function Header({ name, link, start_date, end_date, ongoing }){
 }
 
 function Body({ description, objectives, tools }){
+    const size=35;
     return (
         <>
             <div className="description">{description}</div>
@@ -37,6 +39,10 @@ function Body({ description, objectives, tools }){
             <div className="tools">{
                 tools.map(tool=><span key={tool}>{tool}</span>)
             }</div>
+            <div className="edits">
+                <Image className="crud-icons" src="/trash.png" width={size} height={size} alt="trash"/>
+                <Image className="crud-icons" src="/pencil.png" width={size} height={size} alt="pencil"/>
+            </div>
         </>
     )
 }
@@ -47,9 +53,10 @@ function Experience({ experiences }){
             id="experience"
             className={`content-container ${cutiveMono.className}`}
         >
-            <span className={`content-title ${blackOpsOne.className}`}>
+            <div className={`content-title ${blackOpsOne.className}`}>
                 EXPERIENCE
-            </span>
+                <Image className="crud-icons" src="/plus.png" width={35} height={35} alt="plus"/>
+            </div>
             {experiences?'':<div className={`experience-tile empty`}></div>}
             {experiences?.map(experience=>
                 <div
@@ -80,9 +87,10 @@ function Projects({ projects }){
             id="projects"
             className={`content-container ${cutiveMono.className}`}
         >
-            <span className={`content-title ${blackOpsOne.className}`}>
+            <div className={`content-title ${blackOpsOne.className}`}>
                 PROJECTS
-            </span>
+                <Image className="crud-icons" src="/plus.png" width={35} height={35} alt="plus"/>
+            </div>
             {projects?'':<div className={`project-tile empty`}></div>}
             {projects?.map(project=>
                 <div

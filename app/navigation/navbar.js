@@ -90,6 +90,7 @@ export function Navbar({ toggleNavPane }){
                 className={`${blackOpsOne.className}`}
             >GM</a>
             <div id="links">
+                <Image className="crud-icons" src="/plus.png" width={35} height={35} alt="plus"/>
                 <NavLinks navBar={true}/>
                 <svg className="button toggle-nav-pane" fill="#333333" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={toggleNavPane}>
                     <path fillRule="evenodd" d="M4.92 17.28a.6.6 0 0 1 .6-.6h12a.599.599 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Zm0-4.8a.6.6 0 0 1 .6-.6h12a.599.599 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Zm0-4.8a.6.6 0 0 1 .6-.6h12a.6.6 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Z" clipRule="evenodd"></path>
