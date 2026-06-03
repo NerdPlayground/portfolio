@@ -54,6 +54,20 @@
     }
 }
 
+@media screen and (max-width: 1000px){
+    #links a,#links button{
+        display: none;
+    }
+    
+    #nav-pane{
+        display: flex;
+    }
+
+    .toggle-nav-pane{
+        display: block;
+    }
+}
+
 @media screen and (max-width: 875px){
     #welcome,#content-overflow{
         width: 75%;
@@ -69,18 +83,6 @@
 
     #logo{
         visibility: hidden;
-    }
-    
-    #links a,#links button{
-        display: none;
-    }
-    
-    #nav-pane{
-        display: flex;
-    }
-
-    .toggle-nav-pane{
-        display: block;
     }
 }
 

@@ -181,7 +181,8 @@ form.empty{
     @include text(27.5px);
     text-decoration: none;
     border-radius: 50%;
-    @include border($width:2px,$style:dashed);
+    color: $white;
+    background-color: $black;
 }
 
 #links{
