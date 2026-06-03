@@ -28,9 +28,20 @@ body{
 // ====================CRUD=======================
 
 .crud-icons{
+    cursor: pointer;
     border-radius: 5px;
     margin-right: 10px;
     background-color: $black;
+}
+
+.crud-minus{
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    margin: 0;
+    padding: 3px;
+    @include dimensions($square:15px);
+    border-radius: 50%;
 }
 
 // ====================EMPTY======================
@@ -320,6 +331,11 @@ $section2: calc(100% - #{$section1});
 
 #introduction h1 > span:last-of-type{
     @include flex(row,flex-end,flex-start);
+    & > img{
+        margin: 0;
+        margin-left: 25px;
+        @include dimensions($square:30px);
+    }
 }
 
 #name,#static-name{
@@ -379,6 +395,7 @@ $section2: calc(100% - #{$section1});
     $distance: 3px;
     $neu-light: #F5F5F5;
     $neu-shadows: #626262;
+    position: relative;
     margin-right: 10px;
     margin-bottom: 10px;
     padding-block: 5px;
@@ -402,6 +419,7 @@ $border-radius: 5px;
 }
 
 .social-link{
+    position: relative;
     $padding: 5px;
     margin-right: 25px;
     margin-bottom: 10px;
@@ -414,7 +432,7 @@ $border-radius: 5px;
     border-radius: calc(#{$border-radius} + #{$padding});
 }
 
-.social-link img{
+.social-link img:first-of-type{
     padding: 5px;
     object-fit: contain;
     @include border($style:dashed);

@@ -19,6 +19,7 @@ function Socials({ socials }){
                         alt={socialLink[0]}
                         width={50} height={50}
                     />
+                    <Image src="/minus.png" className="crud-icons crud-minus" alt="minus" width={10} height={10}/>
                 </a>
             )
         }</div>
@@ -38,6 +39,7 @@ function SkillSet({ skills }){
                         className={`${cutiveMono.className}`}
                     >
                         {skill}
+                        <Image src="/minus.png" className="crud-icons crud-minus" alt="minus" width={10} height={10}/>
                     </span>
                 )
             }</div>
@@ -76,6 +78,7 @@ function Introduction({ first_name, last_name, bio }){
                     <span id="static-name" className={`${blackOpsOne.className}`}>
                         {`GEORGE MOBISA`}
                     </span>
+                    <Image src="/pencil.png" alt="pencil" className="crud-icons" width={1} height={1}/>
                 </span>
             </h1>
             <div
