@@ -24,8 +24,8 @@ function Header({ name, link, start_date, end_date, ongoing }){
     );
 }
 
-function Body({ description, objectives, tools }){
-    const size=35;
+function Body({ description, objectives, tools, edit }){
+    const size=30;
     return (
         <>
             <div className="description">{description}</div>
@@ -39,15 +39,16 @@ function Body({ description, objectives, tools }){
             <div className="tools">{
                 tools.map(tool=><span key={tool}>{tool}</span>)
             }</div>
+            {edit &&
             <div className="edits">
                 <Image className="crud-icons" src="/trash.png" width={size} height={size} alt="trash"/>
                 <Image className="crud-icons" src="/pencil.png" width={size} height={size} alt="pencil"/>
-            </div>
+            </div>}
         </>
     )
 }
 
-function Experience({ experiences }){
+function Experience({ experiences, edit }){
     return (
         <div 
             id="experience"
@@ -55,7 +56,7 @@ function Experience({ experiences }){
         >
             <div className={`content-title ${blackOpsOne.className}`}>
                 EXPERIENCE
-                <Image className="crud-icons" src="/plus.png" width={35} height={35} alt="plus"/>
+                {edit && <Image className="crud-icons" src="/plus.png" width={30} height={30} alt="plus"/>}
             </div>
             {experiences?'':<div className={`experience-tile empty`}></div>}
             {experiences?.map(experience=>
@@ -73,7 +74,7 @@ function Experience({ experiences }){
                     <Body
                         description={experience.title}
                         objectives={experience.objectives}
-                        tools={experience.tools}
+                        tools={experience.tools} edit={edit}
                     />
                 </div>
             )}
@@ -81,7 +82,7 @@ function Experience({ experiences }){
     );
 }
 
-function Projects({ projects }){
+function Projects({ projects, edit }){
     return (
         <div 
             id="projects"
@@ -89,7 +90,7 @@ function Projects({ projects }){
         >
             <div className={`content-title ${blackOpsOne.className}`}>
                 PROJECTS
-                <Image className="crud-icons" src="/plus.png" width={35} height={35} alt="plus"/>
+                {edit && <Image className="crud-icons" src="/plus.png" width={30} height={30} alt="plus"/>}
             </div>
             {projects?'':<div className={`project-tile empty`}></div>}
             {projects?.map(project=>
@@ -107,7 +108,7 @@ function Projects({ projects }){
                     <Body
                         description={project.description}
                         objectives={project.objectives}
-                        tools={project.tools}
+                        tools={project.tools} edit={edit}
                     />
                 </div>
             )}
@@ -117,15 +118,15 @@ function Projects({ projects }){
 
 export default function ShowCase({ email, first_name, projects, experiences }){
     const showcase=useRef(null);
-    const { addRef }=useContext(Reference);
+    const { refs,addRef }=useContext(Reference);
     useEffect(()=>addRef({showcase:showcase.current.style}),[addRef]);
 
     return (
         <section id="content-overflow" ref={showcase}>
             <section id="content-section">
-                <Projects projects={projects}/>
-                <Experience experiences={experiences}/>
-                <Contact email={email} first_name={first_name}/>
+                <Projects projects={projects} edit={refs.edit}/>
+                <Experience experiences={experiences} edit={refs.edit}/>
+                <Contact email={email} first_name={first_name} edit={refs.edit}/>
             </section>
         </section>
     );

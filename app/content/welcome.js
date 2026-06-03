@@ -4,7 +4,7 @@ import { useContext, useEffect, useRef } from "react";
 import { courierPrime, blackOpsOne, cutiveMono } from "@ui/fonts";
 import { Reference } from "@lib/context";
 
-function Socials({ socials }){
+function Socials({ socials, edit }){
     return (
         <div id="socials" className={`welcome ${socials?'':'empty'}`}>{
             Object.entries(socials ?? {}).map(socialLink=>
@@ -19,14 +19,14 @@ function Socials({ socials }){
                         alt={socialLink[0]}
                         width={50} height={50}
                     />
-                    <Image src="/minus.png" className="crud-icons crud-minus" alt="minus" width={10} height={10}/>
+                    {edit && <Image src="/minus.png" className="crud-icons crud-minus" alt="minus" width={10} height={10}/>}
                 </a>
             )
         }</div>
     );
 }
 
-function SkillSet({ skills }){
+function SkillSet({ skills, edit }){
     return (
         <div id="skill-set" className="welcome">
             <h2 className={`block-title  ${courierPrime.className}`}>
@@ -39,7 +39,7 @@ function SkillSet({ skills }){
                         className={`${cutiveMono.className}`}
                     >
                         {skill}
-                        <Image src="/minus.png" className="crud-icons crud-minus" alt="minus" width={10} height={10}/>
+                        {edit && <Image src="/minus.png" className="crud-icons crud-minus" alt="minus" width={10} height={10}/>}
                     </span>
                 )
             }</div>
@@ -47,7 +47,7 @@ function SkillSet({ skills }){
     );
 }
 
-function Introduction({ first_name, last_name, bio }){
+function Introduction({ first_name, last_name, bio, edit }){
     useEffect(()=>{
         if(!(first_name && last_name)) return;
         let name=Array.from(`${first_name} ${last_name}`.toUpperCase());
@@ -78,7 +78,7 @@ function Introduction({ first_name, last_name, bio }){
                     <span id="static-name" className={`${blackOpsOne.className}`}>
                         {`GEORGE MOBISA`}
                     </span>
-                    <Image src="/pencil.png" alt="pencil" className="crud-icons" width={1} height={1}/>
+                    {edit && <Image src="/pencil.png" alt="pencil" className="crud-icons" width={1} height={1}/>}
                 </span>
             </h1>
             <div
@@ -94,7 +94,7 @@ function Introduction({ first_name, last_name, bio }){
 export default function Welcome({ details }){
     const profile=details?.profile;
     const welcome=useRef(null);
-    const { addRef }=useContext(Reference);
+    const { refs,addRef }=useContext(Reference);
     useEffect(()=>{addRef({welcome:welcome.current.style})},[addRef]);
 
     return (
@@ -102,12 +102,14 @@ export default function Welcome({ details }){
             <Introduction
                 first_name={details?.first_name}
                 last_name={details?.last_name}
-                bio={profile?.bio}
+                bio={profile?.bio} edit={refs.edit}
             />
             <SkillSet
+                edit={refs.edit}
                 skills={profile?.skills}
             />
             <Socials
+                edit={refs.edit}
                 socials={profile?.socials}
             />
         </section>

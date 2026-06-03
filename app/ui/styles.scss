@@ -169,8 +169,23 @@ form.empty{
 
 #navbar{
     @include dimensions(100%,100%);
-    @include flex(row,center,flex-end);
-    background-color: $white;
+    @include flex(row,center,space-between);
+}
+
+#left-header{
+    padding-left: 25px;
+    @include dimensions($full-height:100%);
+    @include flex(row,center,center);
+    & > div{
+        @include flex(row,center,center);
+        & > :nth-child(1){
+            margin-right: 15px;
+            background-color: $green;
+        }
+        & > :nth-child(2){
+            background-color: $red;
+        }
+    }
 }
 
 #logo{

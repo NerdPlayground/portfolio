@@ -80,17 +80,36 @@ export function Navpane({ toggleNavPane }){
 
 export function Navbar({ toggleNavPane }){
     const navbar=useRef();
-    const { addRef }=useContext(Reference);
+    const { addRef,refs }=useContext(Reference);
     useEffect(()=>addRef({navbar:navbar.current.style}),[addRef]);
+
+    function editDocument(){
+        refs.setEdit(prev=>!prev);
+    }
 
     return (
         <nav id="navbar" ref={navbar}>
-            <a
-                id="logo" href="#welcome"
-                className={`${blackOpsOne.className}`}
-            >GM</a>
+            <div id="left-header">
+                <a
+                    id="logo" href="#welcome"
+                    className={`${blackOpsOne.className}`}
+                >GM</a>
+                {!refs.edit &&
+                <button className={`button nav-link ${courierPrime.className}`} onClick={editDocument}>
+                    {`Edit`}
+                </button>}
+                {refs.edit &&
+                <div>
+                    <button className={`button nav-link ${courierPrime.className}`}>
+                        <Image src="/save.png" alt="save" width={30} height={30}/>
+                    </button>
+                    <button className={`button nav-link ${courierPrime.className}`}>
+                        <Image src="/cancel.png" alt="save" width={30} height={30}/>
+                    </button>
+                </div>}
+            </div>
             <div id="links">
-                <Image className="crud-icons" src="/plus.png" width={35} height={35} alt="plus"/>
+                {refs.edit && <Image className="crud-icons" src="/plus.png" width={30} height={30} alt="plus"/>}
                 <NavLinks navBar={true}/>
                 <svg className="button toggle-nav-pane" fill="#333333" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={toggleNavPane}>
                     <path fillRule="evenodd" d="M4.92 17.28a.6.6 0 0 1 .6-.6h12a.599.599 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Zm0-4.8a.6.6 0 0 1 .6-.6h12a.599.599 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Zm0-4.8a.6.6 0 0 1 .6-.6h12a.6.6 0 1 1 0 1.2h-12a.6.6 0 0 1-.6-.6Z" clipRule="evenodd"></path>
