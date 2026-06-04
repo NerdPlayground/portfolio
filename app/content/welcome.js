@@ -78,8 +78,8 @@ function Introduction({ first_name, last_name, bio, edit }){
                     <span id="static-name" className={`${blackOpsOne.className}`}>
                         {`GEORGE MOBISA`}
                     </span>
-                    {edit && <Image src="/pencil.png" alt="pencil" className="crud-icons" width={1} height={1}/>}
                 </span>
+                {edit && <Image src="/pencil.png" alt="pencil" className="crud-icons" width={1} height={1}/>}
             </h1>
             <div
                 id="description"

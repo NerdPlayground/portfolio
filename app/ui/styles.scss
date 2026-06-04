@@ -346,11 +346,13 @@ $section2: calc(100% - #{$section1});
     margin-right: 17px;
 }
 
-#introduction h1 > span:last-of-type{
-    @include flex(row,flex-end,flex-start);
+#introduction h1{
     & > img{
         margin: 0;
         margin-left: 25px;
+    }
+    & > span:last-of-type{
+        @include flex(row,flex-end,flex-start);
     }
 }
 
