@@ -85,10 +85,12 @@ export function Navbar({ toggleNavPane }){
 
     function editDocument(){
         addRef({edit:true});
+        localStorage.setItem("edit",true);
     }
 
     function cancelEdits(){
         addRef({edit:false});
+        localStorage.setItem("edit",false);
     }
 
     return (
@@ -98,7 +100,7 @@ export function Navbar({ toggleNavPane }){
                     id="logo" href="#welcome"
                     className={`${blackOpsOne.className}`}
                 >GM</a>
-                {!refs.edit &&
+                {refs.token && !refs.edit &&
                 <button className={`button nav-link ${courierPrime.className}`} onClick={editDocument}>
                     {`Edit`}
                 </button>}
