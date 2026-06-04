@@ -84,7 +84,11 @@ export function Navbar({ toggleNavPane }){
     useEffect(()=>addRef({navbar:navbar.current.style}),[addRef]);
 
     function editDocument(){
-        refs.setEdit(prev=>!prev);
+        addRef({edit:true});
+    }
+
+    function cancelEdits(){
+        addRef({edit:false});
     }
 
     return (
@@ -103,7 +107,7 @@ export function Navbar({ toggleNavPane }){
                     <button className={`button nav-link ${courierPrime.className}`}>
                         <Image src="/save.png" alt="save" width={30} height={30}/>
                     </button>
-                    <button className={`button nav-link ${courierPrime.className}`}>
+                    <button className={`button nav-link ${courierPrime.className}`} onClick={cancelEdits}>
                         <Image src="/cancel.png" alt="save" width={30} height={30}/>
                     </button>
                 </div>}
