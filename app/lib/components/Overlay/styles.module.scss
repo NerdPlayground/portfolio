@@ -4,6 +4,6 @@
     position: absolute;
     @include dimensions($square:100%);
     @include flex(row,center,center);
-    visibility: hidden;
+    display: none;
     background-color: transparent;
 }

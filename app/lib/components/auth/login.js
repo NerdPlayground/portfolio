@@ -22,8 +22,8 @@ export default function Login(){
     },[formState]);
 
     function closeLoginPrompt(){
-        refs.portal.visibility="hidden";
-        refs.login_prompt.visibility="hidden";
+        refs.portal.display="none";
+        refs.login_prompt.display="none";
         blurBackground(refs,false);
     }
 

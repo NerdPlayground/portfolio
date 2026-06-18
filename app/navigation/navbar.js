@@ -12,8 +12,8 @@ function AuthButton({ navBar,toggleNavPane }){
     const class_list=`button nav-link ${courierPrime.className}`;
 
     function openLoginPrompt(){
-        refs.portal.visibility="visible";
-        refs.login_prompt.visibility="visible";
+        refs.portal.display="flex";
+        refs.login_prompt.display="flex";
         blurBackground(refs);
         if(!navBar) toggleNavPane();
     }

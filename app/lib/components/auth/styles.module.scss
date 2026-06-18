@@ -7,7 +7,7 @@
     @include dimensions($full-dimension:(50%,80%));
     @include flex(column,center,flex-start);
     @include cardStyle($light-shadows:transparent);
-    visibility: hidden;
+    display: none;
     & > span{
         font-size: 30px;
         margin-bottom: 25px;
